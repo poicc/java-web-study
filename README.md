@@ -1,2 +1,2 @@
 # java-web-study
-JavaWeb学习
+JavaWeb学习仓库
