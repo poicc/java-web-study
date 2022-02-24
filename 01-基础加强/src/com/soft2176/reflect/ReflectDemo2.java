@@ -37,7 +37,7 @@ public class ReflectDemo2 {
         //Field getDeclareFields(String name)
         Field d = personClass.getDeclaredField("d");
         //忽略访问权限修饰符的安全检查-暴力反射
-        d.setAccessible(true);
+//        d.setAccessible(true);
         Object value2 = d.get(p);
         System.out.println(value2);
     }
