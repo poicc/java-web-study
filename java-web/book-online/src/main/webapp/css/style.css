@@ -28,6 +28,10 @@ body {
     flex: 0 0 66%;
 }
 
+.col-9 {
+    flex: 0 0 76%;
+}
+
 /*父元素一半*/
 .col-6 {
     flex: 0 0 48%;
@@ -110,4 +114,44 @@ footer ul li {
     font-size: 12px;
     color: #aaaaaa;
     margin-right: 10px;
+}
+
+.ph-border {
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+}
+
+.white-back {
+    font-size: large;
+    padding: 10px;
+}
+
+.gray-back {
+    font-size: large;
+    background-color: #eeeeee;
+    padding: 10px;
+}
+
+.first {
+    font-weight: 600;
+    color: #af0a0a;
+}
+
+.second {
+    font-weight: 600;
+    color: #ad4141;
+}
+
+.third {
+    font-weight: 600;
+    color: #c47143;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+.gray {
+    font-weight: 600;
+    color: #696868;
 }

@@ -30,25 +30,21 @@ public class ContextLoaderListener implements ServletContextListener {
         List<User> userList = new ArrayList<>(3);
         User[] users = {
                 new User(1, "aaa@qq.com", "698d51a19d8a121ce581499d7b701668", "mqxu", "user1.jpg", "江苏南京", LocalDate.of(2018, 6, 11)),
-                new User(2, "18851699003", "698d51a19d8a121ce581499d7b701668", "poicc", "user2.jpg", "湖南衡阳", LocalDate.of(2019, 2, 18))
+                new User(2, "18851699003", "698d51a19d8a121ce581499d7b701668", "poicc", "user2.jpg", "湖南衡阳", LocalDate.of(2022, 2, 24))
         };
         userList = Arrays.asList(users);
 
         //创建并生成图书数据列表
         List<Book> bookList = new ArrayList<>(10);
         Book[] books = {
-                new Book(1, "漫长的婚约", "book1.jpg", "[法] 塞巴斯蒂安"),
-                new Book(2, "庸人自扰", "book2.jpg", "[英]戴伦•麦加维"),
-                new Book(3, "绿山墙的安妮", "book3.jpg", "[美]理查德·耶茨"),
-                new Book(4, "敌人与邻居", "book4.jpg", "[英]伊恩·布莱克"),
-                new Book(5, "哀伤纪", "book5.jpg", "钟晓阳"),
-                new Book(6, "漫长的婚约", "book1.jpg", "[法] 塞巴斯蒂安"),
-                new Book(7, "庸人自扰", "book2.jpg", "[英]戴伦•麦加维"),
-                new Book(8, "绿山墙的安妮", "book3.jpg", "[美]理查德·耶茨"),
-                new Book(9, "敌人与邻居", "book4.jpg", "[英]伊恩·布莱克"),
-                new Book(10, "哀伤纪", "book5.jpg", "钟晓阳"),
-                new Book(11, "漫长的婚约", "book1.jpg", "[法] 塞巴斯蒂安"),
-                new Book(12, "庸人自扰", "book2.jpg", "[英]戴伦•麦加维")
+                new Book(1, "鬼灭之刃 粤配版", "1.png", "更新至第11话"),
+                new Book(2, "秘密内幕 女警的反击", "2.jpg", "更新至第8话"),
+                new Book(3, "东方少年", "3.png", "更新至第8话"),
+                new Book(4, "东京24区", "4.png", "更新至第4话"),
+                new Book(5, "里亚德录大地", "5.png", "更新至第8话"),
+                new Book(6, "鬼灭之刃 粤配版", "6.png", "更新至第10话"),
+                new Book(7, "在下坂本,有何贵干？总配版", "7.png", "更新至第9话"),
+                new Book(8, "自从贤者弟子的闲着", "8.png", "更新至第7话")
 
         };
         bookList = Arrays.asList(books);
