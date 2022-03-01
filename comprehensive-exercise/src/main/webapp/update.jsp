@@ -27,6 +27,9 @@
         table td:nth-child(add) {
             text-align: right;
         }
+        input {
+            outline: none;
+        }
     </style>
 </head>
 <body>

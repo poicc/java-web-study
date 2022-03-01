@@ -47,19 +47,21 @@ public class RegisterServlet extends HttpServlet {
         // 忽略大小写比对
         if (!verifyCode.equalsIgnoreCase(inputCode)) {
             //验证码错误，跳回注册页面
-            response.getWriter().write("<script>alert('验证码错误');location='/register.html';</script>");
-        }
-        //2. 调用service 注册
-        boolean flag = userService.register(user);
-
-        //3. 判断注册成功与否
-        if (flag) {
-            //注册成功，跳转登陆页面
-            response.getWriter().write("<script>alert('注册成功');location='/login.html';</script>");
+            response.getWriter().write("<script>alert('验证码错误');location='/login.html';</script>");
         } else {
-            //用户名已存在，注册失败，跳回注册页面
-            response.getWriter().write("<script>alert('用户名已存在');location='/register.html';</script>");
+            //2. 调用service 注册
+            boolean flag = userService.register(user);
+
+            //3. 判断注册成功与否
+            if (flag) {
+                //注册成功，跳转登陆页面
+                response.getWriter().write("<script>alert('注册成功');location='/login.html';</script>");
+            } else {
+                //用户名已存在，注册失败，跳回注册页面
+                response.getWriter().write("<script>alert('用户名已存在');location='/login.html';</script>");
+            }
         }
+
     }
 }
 
