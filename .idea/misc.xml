@@ -16,6 +16,10 @@
         <option value="$PROJECT_DIR$/book-online/pom.xml" />
         <option value="$PROJECT_DIR$/03-servlet/pom.xml" />
         <option value="$PROJECT_DIR$/04-response/pom.xml" />
+        <option value="$PROJECT_DIR$/03-request/pom.xml" />
+        <option value="$PROJECT_DIR$/05-cookie-session/pom.xml" />
+        <option value="$PROJECT_DIR$/comprehensize-exercise/pom.xml" />
+        <option value="$PROJECT_DIR$/comprehensive-exercise/pom.xml" />
       </list>
     </option>
   </component>
