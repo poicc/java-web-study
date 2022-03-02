@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <title>ajax请求示例起步--原生JS异步请求</title>
+</head>
+<body>
+<h1>JS定时器</h1>
+<label for="clock">JS定时器</label>
+<input type="text" id="clock"/>
+<input type="button" id="btn" value="停止"/>
+<h1>下方是服务器端返回的数据</h1>
+<h2 id="info"></h2>
+<script>
+    let count = setInterval("clock()",1000)
+    function clock() {
+        let d = new Date();
+        document.getElementById("clock").value = d.toLocaleTimeString();
+    }
+
+    let btn = document.getElementById("btn")
+    btn.addEventListener("click",function () {
+        window.clearInterval(count);
+    })
+
+    //AJAX请求代码
+    //创建核心对象
+    let xHttp;
+    if(window.XMLHttpRequest) {
+        xHttp = new XMLHttpRequest();
+    } else {
+        //处理 IE6及以下
+        xHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    //发送请求
+    xHttp.open("GET","http://localhost:8080/ajaxServlet")
+    xHttp.send();//获取响应
+    xHttp.onreadystatechange = function () {
+        if(this.readyState === 4 && this.status === 200) {
+            let id = document.getElementById("info");
+            id.innerText = this.responseText;
+        }
+    }
+
+
+</script>
+<script>
+
+</script>
+</body>
+</html>

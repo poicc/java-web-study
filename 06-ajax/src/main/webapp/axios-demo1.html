@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <title>axios入门练习</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<button id="btn">请求</button>
+<h2 id="info">请求数据</h2>
+<script>
+    document.getElementById("btn").onclick = function () {
+        // axios({
+        //     method: 'get',
+        //     url: '/axiosServlet?username=zhangsan'
+        // }).then(function (resp) {
+        //     document.getElementById("info").innerHTML = resp.data;
+        // })
+        // axios({
+        //     method: 'post',
+        //     url: '/axiosServlet',
+        //     data:"username=zhangsan"
+        // }).then(function (resp) {
+        //     document.getElementById("info").innerHTML = resp.data;
+        // })
+
+        //简化写法
+        axios.post('/axiosServlet','username=zhangsan').then(function (resp) {
+            document.getElementById("info").innerHTML = resp.data;
+        })
+    }
+</script>
+</body>
+</html>

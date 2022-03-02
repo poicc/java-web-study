@@ -14,6 +14,7 @@
         <module name="03-servlet" />
         <module name="comprehensive-exercise" />
         <module name="03-request" />
+        <module name="06-ajax" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

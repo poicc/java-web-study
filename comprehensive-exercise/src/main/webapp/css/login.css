@@ -214,8 +214,3 @@ input:focus, textarea:focus {
         z-index: 5;
     }
 }
-
-.err_msg {
-    color: red;
-    padding-right: 170px;
-}

@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>登录页</title>
     <link href="css/login.css" rel="stylesheet">
+    <style>
+        .err_msg {
+            color: red;
+            font-size: 10px;
+            width: 150px;
+            margin-left: 80px;
+        }
+    </style>
 </head>
 <body>
 <div class="container right-panel-active">
@@ -13,8 +21,8 @@
             <h2 class="form__title">Sign Up</h2>
             <label for="username1">
                 <input id="username1" name="username1" type="text" placeholder="Username" class="input"/>
-                <span id="username_err" class="err_msg" style="display: none;">用户名不太受欢迎</span>
             </label>
+                <span id="username_err" class="err_msg" style="display: none;">×用户名已存在</span>
             <label for="password1">
                 <input id="password1" name="password1" type="password" placeholder="Password" class="input"/>
                 <span id="password_err" class="err_msg" style="display: none;">密码格式有误</span>
@@ -94,6 +102,33 @@
     document.getElementById("changeImg").onclick = function () {
         document.getElementById("verifyCodeImg").src = "/verifyCode?" + new Date().getMilliseconds();
         return false;
+    }
+    document.getElementById("username1").onblur = function () {
+        const username = this.value;
+        let xHttp;
+        if(window.XMLHttpRequest) {
+            xHttp = new XMLHttpRequest();
+        } else {
+            //处理 IE6及以下
+            xHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        //发送请求
+        xHttp.open("GET","http://localhost:8080/check?username="+username);
+        xHttp.send();//获取响应
+        xHttp.onreadystatechange = function () {
+            if(this.readyState === 4 && this.status === 200) {
+                // alert(this.responseText)
+                console.log(this.responseText)
+                if(this.responseText === "false") {
+                    //用户名已存在
+                    document.getElementById("username_err").style.display = 'block';
+                } else {
+                    document.getElementById("username_err").style.display = 'none';
+                }
+            }
+        }
+
     }
 </script>
 </body>
