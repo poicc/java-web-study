@@ -1,7 +1,6 @@
 package com.soft.web.filter;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -12,7 +11,7 @@ import java.io.IOException;
  * @author: crq
  * @create: 2022-03-04 09:19
  **/
-@WebFilter(urlPatterns = "/*", filterName = "loginFilter")
+//@WebFilter(urlPatterns = "/*", filterName = "loginFilter")
 public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

@@ -17,51 +17,47 @@ import java.util.List;
 public class BrandServiceImpl implements  BrandService {
     SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
+    /**
+     * 查询所有
+     *
+     * @return
+     */
     @Override
     public List<Brand> selectAll() {
-        SqlSession session = factory.openSession();
-        BrandMapper mapper = session.getMapper(BrandMapper.class);
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
         List<Brand> brands = mapper.selectAll();
-        session.close();
         return brands;
     }
 
     @Override
     public void add(Brand brand) {
-        //1. 获取SqlSession
         SqlSession sqlSession = factory.openSession();
-        //2. 获取BrandMapper
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
-        //3. 调用方法
         mapper.add(brand);
-        //4. 提交事务
         sqlSession.commit();
-        //5. 释放资源
         sqlSession.close();
+
     }
 
     @Override
     public void deleteByIds(int[] ids) {
-        //1. 获取SqlSession
         SqlSession sqlSession = factory.openSession();
-        //2. 获取BrandMapper
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
-        //3. 调用方法
         mapper.deleteByIds(ids);
-        //4. 提交事务
         sqlSession.commit();
-        //5. 释放资源
         sqlSession.close();
+
     }
 
     @Override
     public PageBean<Brand> selectByPage(int currentPage, int pageSize) {
-        //1. 获取SqlSession
         SqlSession sqlSession = factory.openSession();
-        //2. 获取BrandMapper
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
         int begin = (currentPage - 1) * pageSize;
+        //    查询当前页的数据
         List<Brand> rows = mapper.selectByPage(begin, pageSize);
+        //    查询总记录数
         int totalCount = mapper.selectTotalCount();
         PageBean<Brand> pageBean = new PageBean<>();
         pageBean.setRows(rows);
@@ -72,9 +68,7 @@ public class BrandServiceImpl implements  BrandService {
 
     @Override
     public PageBean<Brand> selectByPageAndCondition(int currentPage, int pageSize, Brand brand) {
-        //1. 获取SqlSession
         SqlSession sqlSession = factory.openSession();
-        //2. 获取BrandMapper
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
         int begin = (currentPage - 1) * pageSize;
         String brandName = brand.getBrandName();
@@ -85,6 +79,7 @@ public class BrandServiceImpl implements  BrandService {
         if (companyName != null && companyName.length() > 0) {
             brand.setCompanyName("%" + companyName + "%");
         }
+        //    查询当前页数据
         List<Brand> rows = mapper.selectByPageAndCondition(begin, pageSize, brand);
         int totalCount = mapper.selectTotalCountByCondition(brand);
         PageBean<Brand> pageBean = new PageBean<>();

@@ -1,6 +1,7 @@
 package com.soft.web.filter;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,7 +17,7 @@ import java.util.List;
  * @author: crq
  * @create: 2022-03-04 13:49
  **/
-
+@WebFilter("/*")
 public class SensitiveWordsFilter implements Filter {
     /**
      * 敏感词汇集合

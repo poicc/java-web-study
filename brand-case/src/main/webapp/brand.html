@@ -15,6 +15,7 @@
                 <el-option label="禁用" value="0"></el-option>
             </el-select>
         </el-form-item>
+
         <el-form-item label="企业名称">
             <el-input v-model="brand.companyName" placeholder="企业名称"></el-input>
         </el-form-item>
@@ -22,13 +23,15 @@
             <el-input v-model="brand.brandName" placeholder="品牌名称"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="onSubmit">查询</el-button>
+            <el-button type="primary" @click="onSubmit()">查询</el-button>
         </el-form-item>
     </el-form>
+
     <el-row>
         <el-button type="danger" plain @click="deleteByIds">批量删除</el-button>
-        <el-button type="primary" plain @click=" dialogVisible=true">新增</el-button>
+        <el-button type="primary" plain @click="dialogVisible=true">新增</el-button>
     </el-row>
+
     <el-dialog title="编辑品牌" :visible.sync="dialogVisible" width="30%">
         <el-form ref="form" :model="brand" label-width="80px">
             <el-form-item label="品牌名称">
@@ -59,7 +62,7 @@
         <el-table :data="tableData" style="width:100%" :row-class-name="tableRowClassName"
                   @selection-change="handleSelectionChange"
         >
-            <el-table-column type="index" width="55">
+            <el-table-column type="selection" width="55">
             </el-table-column>
             <el-table-column type="index" width="50">
             </el-table-column>
@@ -99,9 +102,10 @@
         },
         methods: {
             selectAll() {
+                console.log("hello")
                 axios({
                     method: "post",
-                    url: "http://localhost:8888/selectByPageAndCondition?currentPage=" + this.currentPage + "&pageSize=" + this.pageSize,
+                    url: "http://localhost:8080/brand/selectByPageAndCondition?currentPage=" + this.currentPage + "&pageSize=" + this.pageSize,
                     data: this.brand
                 }).then(resp => {
                     this.tableData = resp.data.rows;
@@ -125,20 +129,23 @@
                 this.selectAll();
             },
             addBrand() {
-                console.log(this.brand);
-                let _this = this;
+                const _this = this;
                 axios({
                     method: "post",
-                    url: "http://localhost:8888/brand/add",
+                    url: "http://localhost:8080/brand/add",
                     data: _this.brand
                 }).then(function (resp) {
                     if (resp.data === "success") {
                         _this.dialogVisible = false;
+                        _this.brand.brandName = "";
+                        _this.brand.companyName="";
+                        _this.brand.status ="";
                         _this.selectAll();
                         _this.$message({
                             message: '恭喜你，添加成功',
-                            type: 'success'
+                            type: "success"
                         })
+
                     }
                 })
             },
@@ -154,6 +161,7 @@
             },
             //    批量删除
             deleteByIds() {
+                console.log("点击删除方法")
                 console.log(this.multipleSelection);
                 this.$confirm('此操作讲删除该数据，是否继续?', '提示', {
                     confirmButtonText: "确定",
@@ -167,10 +175,10 @@
                     const _this = this;
                     axios({
                         method: "post",
-                        url: "http://localhost:8888/brand/deleteByIds",
+                        url: "http://localhost:8080/brand/deleteByIds",
                         data: _this.selectedIds
                     }).then(function (resp) {
-                        if (resp.data === ' success') {
+                        if (resp.data === "success") {
                             _this.selectAll();
                             _this.message({
                                 message: "恭喜你，删除成功",

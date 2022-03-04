@@ -1,5 +1,6 @@
 package com.soft.web.listener;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
@@ -23,6 +24,7 @@ public class ContextLoaderListener implements ServletContextListener, HttpSessio
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         //加载资源
+        ServletContext servletContext = sce.getServletContext();
         System.out.println("ContextLoaderListener初始化，加载资源...");
         sessionMap = new HashMap<>(8);
         sce.getServletContext().setAttribute("sessionMap", sessionMap);

@@ -56,7 +56,7 @@ public interface BrandMapper {
      * @param brand 查询条件对象
      * @return 当前页数数据集合
      */
-    List<Brand> selectByPageAndCondition(@Param("begin") int begin,@Param("size") int size,@Param("brand") Brand brand);
+    List<Brand> selectByPageAndCondition(@Param("begin") int begin, @Param("size") int size, @Param("brand") Brand brand);
 
     /**
      * 根据条件查询总记录数
