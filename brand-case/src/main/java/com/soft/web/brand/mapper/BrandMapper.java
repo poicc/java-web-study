@@ -46,7 +46,7 @@ public interface BrandMapper {
      * 查看总记录数
      * @return list
      */
-    @Select("SELECT COUNT(*) FROM th_brand")
+    @Select("SELECT COUNT(*) FROM tb_brand")
     int selectTotalCount();
 
     /**
