@@ -10,7 +10,9 @@
         <module name="05-cookie-session" />
         <module name="04-response" />
         <module name="quickstart" />
+        <module name="brand-case" />
         <module name="book-online" />
+        <module name="07-filter-listener" />
         <module name="03-servlet" />
         <module name="comprehensive-exercise" />
         <module name="03-request" />

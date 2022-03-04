@@ -89,36 +89,34 @@
             }
         }
         console.log(formData);
-        // let xHttp;
-        // if(window.XMLHttpRequest) {
-        //     xHttp = new XMLHttpRequest()
-        // } else {
-        //     xHttp = new ActiveXObject("Microsoft.XMLHTTP");
-        // }
-        //
-        // xHttp.open("post","http://localhost:8080/newBrand");
-        // xHttp.send(JSON.stringify(formData));
-        //
-        // xHttp.onsonreadystatechange = function () {
-        //     if(this.readyState == 4 && this.status == 200) {
-        //         if (this.responseText === "success") {
-        //                     //跳到品牌列表⻚，重新请求书记
-        //                     location.href = "http://localhost:8080/brand.html";
-        //                 }
-        //     }
-        // }
-
-        axios({
-            method: "post",
-            url: "http://localhost:8080/newBrand",
-            data: formData
-        }).then(function (resp) {
-            //判断响应数据是否为 success
-            if (resp.data === "success") {
-                //跳到品牌列表⻚，重新请求书记
-                location.href = "http://localhost:8080/brand.html";
+        let xHttp;
+        if(window.XMLHttpRequest) {
+            xHttp = new XMLHttpRequest()
+        } else {
+            xHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xHttp.open('POST',"http://localhost:8080/newBrand")
+        xHttp.send(JSON.stringify(formData));
+        xHttp.onreadystatechange = function () {
+            if(this.readyState == 4 && status == 200) {
+                if (this.responseText === "success") {
+                    //跳到品牌列表⻚，重新请求书记
+                    location.href = "http://localhost:8080/brand.html";
+                }
             }
-        })
+        }
+
+        // axios({
+        //     method: "post",
+        //     url: "http://localhost:8080/newBrand",
+        //     data: formData
+        // }).then(function (resp) {
+        //     //判断响应数据是否为 success
+        //     if (resp.data === "success") {
+        //         //跳到品牌列表⻚，重新请求书记
+        //         location.href = "http://localhost:8080/brand.html";
+        //     }
+        // })
 
 
     }

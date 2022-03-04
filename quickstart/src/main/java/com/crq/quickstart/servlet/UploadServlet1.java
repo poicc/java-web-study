@@ -28,13 +28,10 @@ public class UploadServlet1 extends HttpServlet {
         //获取提交数据中的account
         String account = request.getParameter("account");
         System.out.println(account);
-
         Part part = request.getPart("file");
         // 原文件名
         System.out.println(part.getSubmittedFileName());
-
         String fileName = "";
-
         if (part.getContentType() != null) {
             // 给文件改名
             fileName = UUID.randomUUID() + part.getSubmittedFileName().substring(part.getSubmittedFileName().lastIndexOf("."));
